@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h2>Students List</h2>
+<form>
+    <input name="branch" placeholder="Filter by Branch">
+    <button>Filter</button>
+</form>
+
+<h3>Total Students: <%= count %></h3>
+
+<% if(students.length===0){ %>
+
+    <h3>No students registered</h3>
+
+<% } else { %>
+
+<table border="1" cellpadding="10">
+<tr>
+    <th>Name</th>
+    <th>Branch</th>
+    <th>Delete</th>
+</tr>
+
+<% students.forEach(s=>{ %>
+
+<tr>
+    <td><%= s.name %></td>
+    <td><%= s.branch %></td>
+    <td>
+        <a href="/students/delete/<%= s.id %>">
+            Delete
+        </a>
+    </td>
+</tr>
+
+<% }) %>
+
+</table>
+
+<% } %>
+
+<br>
+<a href="/">Add More</a>
+</body>
+</html>
